@@ -57,7 +57,7 @@ export class Sprite extends CanvasElement {
         this._height = 60;
         this._frameIndex = 0;
         this._tickCount = 0;
-        this._ticksPerFrame = 1;
+        this._ticksPerFrame = 6;
         this._loops = true;
     }
 
@@ -82,6 +82,9 @@ export class Sprite extends CanvasElement {
     }
 
     public render() {
+        if (this._tickCount !== 1) {
+            return;
+        }
         this._context.clearRect(0, 0, this._width, this._height);
         // void ctx.drawImage(image, sx, sy, sWidth, sHeight, dx, dy, dWidth, dHeight);
         this._context.drawImage(
