@@ -56,7 +56,7 @@ var Sprite = (function (_super) {
         _this._height = 60;
         _this._frameIndex = 0;
         _this._tickCount = 0;
-        _this._ticksPerFrame = 1;
+        _this._ticksPerFrame = 6;
         _this._loops = true;
         return _this;
     }
@@ -81,6 +81,9 @@ var Sprite = (function (_super) {
         }
     };
     Sprite.prototype.render = function () {
+        if (this._tickCount !== 1) {
+            return;
+        }
         this._context.clearRect(0, 0, this._width, this._height);
         this._context.drawImage(this._images[this._frameIndex], 100, 100);
     };
