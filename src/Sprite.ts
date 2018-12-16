@@ -1,39 +1,5 @@
 import { CanvasElement } from "./CanvasElement";
-
-var silSamData = require('../images/silsam/sprite.json');
-
-class Coordinate {
-    public x: number;
-    public y: number;
-}
-
-class StateSpriteFrameData {
-    public start: number;
-    public end: number;
-    public center: Coordinate;
-    public prefix: string;
-    public suffix: string;
-}
-
-// class EntitySpriteFrameData {
-//     private _stateInfo: Map<string, StateSpriteFrameData>;
-// }
-
-export class SpritePathService {
-    private _entityInfo: any;//Map<string, EntitySpriteFrameData>;
-    constructor() {
-        this._entityInfo = { "silsam": silSamData };
-    }
-
-    public getSpritePaths(entityID:string, state: string) {
-        let stateInfo = this._entityInfo["silsam"]["idle"];
-        let paths = new Array<string>();
-        for (let i = stateInfo.start; i <= stateInfo.end; i++) {
-            paths.push("images/silsam/" + stateInfo.prefix + i.toString() + stateInfo.suffix);
-        }
-        return paths;
-    }
-}
+import {JsonObject, JsonProperty} from "json2typescript";
 
 export class SpriteOptions {
     public imagePaths: Array<string>;

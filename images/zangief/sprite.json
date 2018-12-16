@@ -1,0 +1,13 @@
+{
+	"idle": {
+		"start": 2,
+		"end": 7,
+		"axis": {
+			"x": 400,
+			"y": 400
+		},
+		"prefix": "Zangief_",
+		"suffix": ".png",
+		"pad0": 4
+	}
+}

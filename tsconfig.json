@@ -5,7 +5,11 @@
         "noImplicitAny": true,
         "removeComments": true,
         "preserveConstEnums": true,
-        "sourceMap": true
+        "sourceMap": true,
+        "experimentalDecorators": true,
+        "emitDecoratorMetadata": true,
+        "lib": ["es2017","es5", "es6", "dom"],
+        "types": [ "node" ]
     },
     "include": [
         "src/**/*"
