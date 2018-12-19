@@ -2,11 +2,12 @@
 	"idle": {
 		"start": 103,
 		"end": 117,
-		"center": {
+		"axis": {
 			"x": 370,
 			"y": 425
 		},
 		"prefix": "anim",
-		"suffix": ".gif"
+		"suffix": ".gif",
+		"pad0": 0
 	}
 }

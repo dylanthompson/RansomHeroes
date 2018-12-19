@@ -1,4 +1,5 @@
-import { SpritePathService, SpriteOptions, Sprite } from "./Sprite";
+import { SpriteOptions, Sprite } from "./Sprite";
+import { SpritePathService } from "./services/SpritePathService";
 
 export class Canvas {
     private _htmlCanvas: HTMLCanvasElement;
@@ -10,13 +11,24 @@ export class Canvas {
         this._context = htmlCanvas.getContext("2d");
         this._sprites = new Array<Sprite>();
 
-        let spritePathService = new SpritePathService();
-        let paths = spritePathService.getSpritePaths("silsam", "idle");
-        let options = new SpriteOptions();
-        options.imagePaths = paths;
-        this._sprites.push(new Sprite(this._context, options));
+        this.demo();
 
         let animationFrame = window.requestAnimationFrame(() => this.run());
+    }
+
+    private demo() {
+        let entities = ["silsam", "zangief"];
+        let states = ["idle"];
+
+        let spritePathService = new SpritePathService();
+        for (let entity of entities) {
+            for (let state of states) {
+                let options = new SpriteOptions();
+                options.imagePaths = spritePathService.getStateSpritePaths(entity, state);
+                let sprite = new Sprite(this._context, options);
+                this._sprites.push(sprite);
+            }
+        }
     }
 
     private run() {
