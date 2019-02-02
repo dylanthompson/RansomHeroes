@@ -8,7 +8,7 @@ var webpack = require('webpack-stream');
 var tsProject = ts.createProject('tsconfig.json');
 
 gulp.task('webpack', function() {
-    return gulp.src('js/Canvas.js')
+    return gulp.src('js/RHGame.js')
       .pipe(webpack(webpackConfig))
       .pipe(gulp.dest('dist/'));
   });
