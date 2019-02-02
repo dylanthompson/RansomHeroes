@@ -103,7 +103,18 @@ return /******/ (function(modules) { // webpackBootstrap
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var map = {\n\t\"./silversamurai/sprite.json\": \"./images/silversamurai/sprite.json\",\n\t\"./zangief/sprite.json\": \"./images/zangief/sprite.json\"\n};\n\n\nfunction webpackContext(req) {\n\tvar id = webpackContextResolve(req);\n\treturn __webpack_require__(id);\n}\nfunction webpackContextResolve(req) {\n\tvar id = map[req];\n\tif(!(id + 1)) { // check for number or string\n\t\tvar e = new Error(\"Cannot find module '\" + req + \"'\");\n\t\te.code = 'MODULE_NOT_FOUND';\n\t\tthrow e;\n\t}\n\treturn id;\n}\nwebpackContext.keys = function webpackContextKeys() {\n\treturn Object.keys(map);\n};\nwebpackContext.resolve = webpackContextResolve;\nmodule.exports = webpackContext;\nwebpackContext.id = \"./images sync recursive ^\\\\.\\\\/.*\\\\/sprite\\\\.json$\";\n\n//# sourceURL=webpack://RansomHeroes/./images_sync_^\\.\\/.*\\/sprite\\.json$?");
+eval("var map = {\n\t\"./silsam/sprite.json\": \"./images/silsam/sprite.json\",\n\t\"./silversamurai/sprite.json\": \"./images/silversamurai/sprite.json\",\n\t\"./zangief/sprite.json\": \"./images/zangief/sprite.json\"\n};\n\n\nfunction webpackContext(req) {\n\tvar id = webpackContextResolve(req);\n\treturn __webpack_require__(id);\n}\nfunction webpackContextResolve(req) {\n\tvar id = map[req];\n\tif(!(id + 1)) { // check for number or string\n\t\tvar e = new Error(\"Cannot find module '\" + req + \"'\");\n\t\te.code = 'MODULE_NOT_FOUND';\n\t\tthrow e;\n\t}\n\treturn id;\n}\nwebpackContext.keys = function webpackContextKeys() {\n\treturn Object.keys(map);\n};\nwebpackContext.resolve = webpackContextResolve;\nmodule.exports = webpackContext;\nwebpackContext.id = \"./images sync recursive ^\\\\.\\\\/.*\\\\/sprite\\\\.json$\";\n\n//# sourceURL=webpack://RansomHeroes/./images_sync_^\\.\\/.*\\/sprite\\.json$?");
+
+/***/ }),
+
+/***/ "./images/silsam/sprite.json":
+/*!***********************************!*\
+  !*** ./images/silsam/sprite.json ***!
+  \***********************************/
+/*! exports provided: idle, default */
+/***/ (function(module) {
+
+eval("module.exports = {\"idle\":{\"start\":103,\"end\":117,\"axis\":{\"x\":370,\"y\":425},\"prefix\":\"anim\",\"suffix\":\".gif\",\"pad0\":0}};\n\n//# sourceURL=webpack://RansomHeroes/./images/silsam/sprite.json?");
 
 /***/ }),
 
