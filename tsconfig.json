@@ -8,7 +8,10 @@
         "sourceMap": true,
         "experimentalDecorators": true,
         "emitDecoratorMetadata": true,
+<<<<<<< HEAD
         "target": "es5",
+=======
+>>>>>>> 7d847f332077d00a8f863aa316a0515c013c7cda
         "lib": ["es2017","es5", "es6", "dom"],
         "types": [ "node" ]
     },

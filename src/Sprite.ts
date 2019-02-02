@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+import { CanvasElement } from "./CanvasElement";
+>>>>>>> 7d847f332077d00a8f863aa316a0515c013c7cda
 import {JsonObject, JsonProperty} from "json2typescript";
 
 export class SpriteOptions {
