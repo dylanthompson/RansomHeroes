@@ -1,13 +1,25 @@
 {
-	"idle": {
-		"start": 2,
-		"end": 7,
+	"config": {
+		"prefix": "Zangief_",
+		"suffix": ".png",
+		"pad0": 4,
 		"axis": {
 			"x": 400,
 			"y": 400
+		}
+	},
+	"states": {
+		"idle": {
+			"start": 17,
+			"end": 36
 		},
-		"prefix": "Zangief_",
-		"suffix": ".png",
-		"pad0": 4
+		"air-idle": {
+			"start": 65,
+			"end": 65
+		},
+		"lariat": {
+			"start": 2,
+			"end": 7
+		}
 	}
 }

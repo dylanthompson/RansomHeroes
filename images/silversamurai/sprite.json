@@ -1,13 +1,21 @@
 {
-	"idle": {
-		"start": 102,
-		"end": 116,
+	"config": {
+		"prefix": "Silver Samurai_",
+		"suffix": ".png",
+		"pad0": 4,
 		"axis": {
 			"x": 400,
 			"y": 400
+		}
+	},
+	"states": {
+		"idle": {
+			"start": 102,
+			"end": 116
 		},
-		"prefix": "Silver Samurai_",
-		"suffix": ".png",
-		"pad0": 4
+		"air-idle": {
+			"start": 170,
+			"end": 171
+		}
 	}
 }
