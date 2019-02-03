@@ -31,8 +31,25 @@ export class RHView {
         sprite.render(this._canvas.context, entity.x, entity.y);
     }
 
+    public drawGround(drawGround: RHModel) {
+        this._canvas.context.beginPath();
+        this._canvas.context.moveTo(0, 600);
+        this._canvas.context.lineTo(50, 550);
+        this._canvas.context.lineTo(800, 550);
+        this._canvas.context.lineTo(750, 600);
+        this._canvas.context.stroke();
+
+        this._canvas.context.beginPath();
+        this._canvas.context.moveTo(50, 550);
+        this._canvas.context.lineTo(50, 0);
+        this._canvas.context.stroke();
+    }
+
     public draw(model: RHModel) {
         this._canvas.context.clearRect(0, 0, this._canvas.context.canvas.width, this._canvas.context.canvas.height);
+
+        this.drawGround(model);
+
         for (let entity of model.entities) {
             this.drawEntity(entity);
         }
