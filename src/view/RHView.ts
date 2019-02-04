@@ -8,11 +8,16 @@ export class RHView {
     private _canvas: Canvas;
     private _entitySprites: Map<string, Map<string, Sprite>>;
     private _spriteService: SpritePathService;
+    private _background: HTMLImageElement;
 
     constructor(canvas: Canvas) { 
         this._canvas = canvas;
         this._entitySprites = new Map<string, Map<string, Sprite>>();
         this._spriteService = new SpritePathService();
+
+        this._background = new Image();
+        this._background.src = "images/tree.jpg";
+
     }
 
     public addEntityView(entityID: string) {
@@ -50,17 +55,21 @@ export class RHView {
     }
 
     public drawGround(drawGround: RHModel) {
-        this._canvas.context.beginPath();
-        this._canvas.context.moveTo(0, 600);
-        this._canvas.context.lineTo(50, 550);
-        this._canvas.context.lineTo(800, 550);
-        this._canvas.context.lineTo(750, 600);
-        this._canvas.context.stroke();
 
-        this._canvas.context.beginPath();
-        this._canvas.context.moveTo(50, 550);
-        this._canvas.context.lineTo(50, 0);
-        this._canvas.context.stroke();
+
+        this._canvas.context.drawImage(this._background, 0, 0, 800, 600);
+
+        // this._canvas.context.beginPath();
+        // this._canvas.context.moveTo(0, 600);
+        // this._canvas.context.lineTo(50, 550);
+        // this._canvas.context.lineTo(800, 550);
+        // this._canvas.context.lineTo(750, 600);
+        // this._canvas.context.stroke();
+
+        // this._canvas.context.beginPath();
+        // this._canvas.context.moveTo(50, 550);
+        // this._canvas.context.lineTo(50, 0);
+        // this._canvas.context.stroke();
     }
 
     public draw(model: RHModel) {
