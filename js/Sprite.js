@@ -1,9 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-<<<<<<< HEAD
 var Entity_1 = require("./Entity");
-=======
->>>>>>> 95db0b60083616a0ebcd82b9bf40a442dd267968
 var SpriteOptions = (function () {
     function SpriteOptions() {
     }
@@ -29,12 +26,9 @@ var Sprite = (function () {
             this._images.push(image);
         }
     };
-<<<<<<< HEAD
     Sprite.prototype.setFrame = function (progressPercentage) {
         this._frameIndex = Math.floor(progressPercentage * (this.length - 1));
     };
-=======
->>>>>>> 95db0b60083616a0ebcd82b9bf40a442dd267968
     Sprite.prototype.update = function () {
         this._tickCount++;
         if (this._tickCount > this._ticksPerFrame) {
@@ -47,7 +41,6 @@ var Sprite = (function () {
             }
         }
     };
-<<<<<<< HEAD
     Object.defineProperty(Sprite.prototype, "length", {
         get: function () {
             return this._images.length;
@@ -69,10 +62,6 @@ var Sprite = (function () {
         if (direction == Entity_1.Direction.Right) {
             context.scale(-1, 1);
         }
-=======
-    Sprite.prototype.render = function (context, x, y) {
-        context.drawImage(this._images[this._frameIndex], x, y);
->>>>>>> 95db0b60083616a0ebcd82b9bf40a442dd267968
     };
     ;
     return Sprite;
