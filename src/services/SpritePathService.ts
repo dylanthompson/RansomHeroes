@@ -1,7 +1,7 @@
 var spriteConfigs: { [s: string]: {} };
 var entityIDs: Array<string> = ["zangief", "silversamurai"];
 
-class Coordinate {
+export class Coordinate {
     public x: number;
     public y: number;
 }
@@ -40,9 +40,20 @@ export class SpritePathService {
         let entitySpriteData:EntitySpriteSetData = this.getEntitySpritePaths(entityID);
         let stateInfo: StateSpriteFrameData = entitySpriteData.states[state];
         let paths = new Array<string>();
-        for (let i = stateInfo.start; i <= stateInfo.end; i++) {
-            paths.push(`images/${entityID}/${entitySpriteData.config.prefix + i.toString().padStart(entitySpriteData.config.pad0, '0') + entitySpriteData.config.suffix}`);
+
+        let start = stateInfo.start;
+        let end = stateInfo.end;
+
+        if (end > start) {
+            for (let i = start; i <= end; i++) {
+                paths.push(`images/${entityID}/${entitySpriteData.config.prefix + i.toString().padStart(entitySpriteData.config.pad0, '0') + entitySpriteData.config.suffix}`);
+            }
+        } else {
+            for (let i = start; i >= end; i--) {
+                paths.push(`images/${entityID}/${entitySpriteData.config.prefix + i.toString().padStart(entitySpriteData.config.pad0, '0') + entitySpriteData.config.suffix}`);
+            }
         }
+
         return paths;
     }
 }

@@ -13,11 +13,11 @@ export class RHModel {
     }
 
     public update() {
-        this._time += 1;
+        let timeDelta = 1;
+        this._time += timeDelta;
         for (let entity of this._entities) {
-            entity.update(this._time);
+            entity.update(timeDelta);
         }
-        
     }
 
     constructor() {

@@ -27,8 +27,20 @@ export class RHView {
 
     public drawEntity(entity: Entity) {
         var sprite = this._entitySprites.get(entity.entityID).get(entity.state);
-        sprite.update();
-        sprite.render(this._canvas.context, entity.x, entity.y);
+        if (entity.state == "turn") {
+            sprite.setFrame(entity.getProgressPercentage());
+        } else {
+            sprite.update();
+        }
+        
+
+        let spritePathService = new SpritePathService();
+        let entityData = spritePathService.getEntitySpritePaths(entity.entityID);
+        let origin = {
+            x: entityData.config.axis.x,
+            y: entityData.config.axis.y
+        };
+        sprite.render(this._canvas.context, entity.x, entity.y, entity.direction, origin);
     }
 
     public drawGround(drawGround: RHModel) {

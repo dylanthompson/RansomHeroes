@@ -1,5 +1,5 @@
-import {JsonObject, JsonProperty} from "json2typescript";
-
+import { Direction } from "./Entity";
+import { Coordinate } from "./services/SpritePathService";
 export class SpriteOptions {
     public imagePaths: Array<string>;
 }
@@ -33,6 +33,10 @@ export class Sprite {
         }
     }
 
+    public setFrame(progressPercentage: number) {
+        this._frameIndex = Math.floor(progressPercentage * (this.length - 1));
+    }
+
     public update() {
         this._tickCount++;
         if (this._tickCount > this._ticksPerFrame) {
@@ -45,21 +49,33 @@ export class Sprite {
         }
     }
 
-    public render(context: CanvasRenderingContext2D, x: number, y: number) {
+    public get length() {
+        return this._images.length;
+    }
+
+    public render(context: CanvasRenderingContext2D, x: number, y: number, direction: Direction, origin: Coordinate) {
         // if (this._tickCount !== 1) {
         //     return;
         // }
         //context.clearRect(0, 0, this._width, this._height);
         // void ctx.drawImage(image, sx, sy, sWidth, sHeight, dx, dy, dWidth, dHeight);
-        context.drawImage(
-            this._images[this._frameIndex],
-            //this._frameIndex * this._width / this._images.length,
-            //0,
-            //this._width / this._images.length,
-            //this._height,
-            x,
-            y);//,
-            //this._width / this._images.length,
-            //this._height);
-        };   
+
+        let image = this._images[this._frameIndex];
+
+        let width = image.width;
+        let height = image.height;
+
+        let xPos = x - origin.x;
+        let yPos = y - origin.y;
+        if (direction == Direction.Right) {
+            context.scale(-1, 1);
+            xPos = -xPos - width;
+        }
+
+        context.drawImage(image, xPos, yPos);
+
+        if (direction == Direction.Right) {
+            context.scale(-1, 1);
+        }
+    };
 }

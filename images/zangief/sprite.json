@@ -5,10 +5,14 @@
 		"pad0": 4,
 		"axis": {
 			"x": 400,
-			"y": 400
+			"y": 260
 		}
 	},
 	"states": {
+		"turn": {
+			"start": 74,
+			"end": 70
+		},
 		"idle": {
 			"start": 17,
 			"end": 36
@@ -16,6 +20,10 @@
 		"air-idle": {
 			"start": 65,
 			"end": 65
+		},
+		"walk": {
+			"start": 37,
+			"end": 46
 		},
 		"lariat": {
 			"start": 2,

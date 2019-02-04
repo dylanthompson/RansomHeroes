@@ -14,10 +14,10 @@ export class RHGame {
         this._view = new RHView(canvas);
         
         let entities = ["silversamurai", "zangief"];
-        let states = ["idle"];
+        let states = ["idle", "air-idle", "walk", "turn"];
         for (let entity of entities) {
-            var randX = Math.floor(Math.random() * 200) + 50;
-            var randY = Math.floor(Math.random() * 200) + 50;
+            var randX = Math.floor(Math.random() * 700) + 50;
+            var randY = Math.floor(Math.random() * 400) + 50;
             var curEntity = new Entity(entity, randX, randY);
             this._model.addEntity(curEntity);
 

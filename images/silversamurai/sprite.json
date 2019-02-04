@@ -9,6 +9,10 @@
 		}
 	},
 	"states": {
+		"turn": {
+			"start": 214,
+			"end": 210
+		},
 		"idle": {
 			"start": 102,
 			"end": 116
@@ -16,6 +20,10 @@
 		"air-idle": {
 			"start": 170,
 			"end": 171
+		},
+		"walk": {
+			"start": 118,
+			"end": 131
 		}
 	}
 }
