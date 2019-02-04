@@ -20,6 +20,9 @@ export class EntitySpriteSetData {
     public config: SpriteSetConfig;
 }
 
+export type EntitySpriteData = { [entityName: string]: StateSpriteData };
+export type StateSpriteData = { [stateName: string]:  StateSpriteFrameData };
+
 export class SpritePathService {
     private _entityInfo: any;
     constructor() {

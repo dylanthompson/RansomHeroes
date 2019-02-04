@@ -1,0 +1,13 @@
+{
+	"idle": {
+		"start": 103,
+		"end": 117,
+		"axis": {
+			"x": 370,
+			"y": 425
+		},
+		"prefix": "anim",
+		"suffix": ".gif",
+		"pad0": 0
+	}
+}
