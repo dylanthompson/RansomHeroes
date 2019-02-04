@@ -1,24 +1,21 @@
+import { Coordinate } from "../lib/2DGame";
+
 var spriteConfigs: { [s: string]: {} };
 var entityIDs: Array<string> = ["zangief", "silversamurai"];
 
-export class Coordinate {
-    public x: number;
-    public y: number;
-}
-
-class SpriteSetConfig {
+export class SpriteSetConfig {
     public axis: Coordinate = null;
     public prefix: string = null;
     public suffix: string = null;
     public pad0: number = null;
 }
-class StateSpriteFrameData {
+export class StateSpriteFrameData {
     public start: number = null;
     public end: number = null;
 }
-class StatesSpriteData { [stateName: string]:  StateSpriteFrameData };
-class EntitiesSpriteSetData { [entityName: string]: EntitySpriteSetData; };
-class EntitySpriteSetData {
+export class StatesSpriteData { [stateName: string]:  StateSpriteFrameData };
+export class EntitiesSpriteSetData { [entityName: string]: EntitySpriteSetData; };
+export class EntitySpriteSetData {
     public states: StatesSpriteData;
     public config: SpriteSetConfig;
 }

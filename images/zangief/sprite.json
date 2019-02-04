@@ -28,6 +28,26 @@
 		"lariat": {
 			"start": 2,
 			"end": 7
+		},
+		"air-jump-forward": {
+			"start": 62,
+			"end": 64
+		},
+		"air-jump": {
+			"start": 62,
+			"end": 64
+		},
+		"air-idle-forward": {
+			"start": 65,
+			"end": 65
+		},
+		"land-forward": {
+			"start": 69,
+			"end": 67
+		},
+		"land": {
+			"start": 69,
+			"end": 67
 		}
 	}
 }

@@ -1,22 +1,30 @@
 import { Canvas } from "./Canvas";
 import { Sprite, SpriteOptions } from "./Sprite";
-import { RHModel } from "./RHModel";
-import { Entity } from "./Entity";
-import { SpritePathService } from "./services/SpritePathService";
+import { RHModel } from "../model/RHModel";
+import { Entity } from "../model/Entity";
+import { SpritePathService, EntitySpriteSetData } from "../services/SpritePathService";
 
 export class RHView {
     private _canvas: Canvas;
     private _entitySprites: Map<string, Map<string, Sprite>>;
+    private _spriteService: SpritePathService;
 
     constructor(canvas: Canvas) { 
         this._canvas = canvas;
         this._entitySprites = new Map<string, Map<string, Sprite>>();
+        this._spriteService = new SpritePathService();
     }
 
-    public addEntityView(entityID: string, state: string) {
-        let spritePathService = new SpritePathService();
+    public addEntityView(entityID: string) {
+        let entitySpriteData: EntitySpriteSetData = this._spriteService.getEntitySpritePaths(entityID);
+        for (let state of Object.keys(entitySpriteData.states)) {
+            this.addEntityStateView(entityID, state);
+        }
+    }
+
+    public addEntityStateView(entityID: string, state: string) {
         let options = new SpriteOptions();
-        options.imagePaths = spritePathService.getStateSpritePaths(entityID, state);
+        options.imagePaths = this._spriteService.getStateSpritePaths(entityID, state);
         let sprite = new Sprite(options);
 
         if (!this._entitySprites.has(entityID)) {
@@ -27,15 +35,13 @@ export class RHView {
 
     public drawEntity(entity: Entity) {
         var sprite = this._entitySprites.get(entity.entityID).get(entity.state);
-        if (entity.state == "turn") {
+        if (entity.hasFiniteState()) {
             sprite.setFrame(entity.getProgressPercentage());
         } else {
             sprite.update();
         }
-        
 
-        let spritePathService = new SpritePathService();
-        let entityData = spritePathService.getEntitySpritePaths(entity.entityID);
+        let entityData = this._spriteService.getEntitySpritePaths(entity.entityID);
         let origin = {
             x: entityData.config.axis.x,
             y: entityData.config.axis.y
