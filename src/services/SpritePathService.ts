@@ -1,7 +1,7 @@
 import { JsonConvert, JsonObject, JsonProperty } from "json2typescript";
 
 var spriteConfigs: { [s: string]: {} };
-var entityIDs: Array<string> = ["zangief", "silsam"];
+var entityIDs: Array<string> = ["zangief", "silversamurai"];
 
 @JsonObject("Coordinate")
 class Coordinate {
@@ -37,16 +37,18 @@ for (let entityID of entityIDs) {
     spriteConfigs[entityID] = require(`../../images/${entityID}/sprite.json`);
 }
 
+export type EntitySpriteData = { [entityName: string]: StateSpriteData };
+export type StateSpriteData = { [stateName: string]:  StateSpriteFrameData };
+
 export class SpritePathService {
-    private _entityInfo: { [entityName: string]:  { [stateName: string]:  StateSpriteFrameData } };
+    private _entityInfo: EntitySpriteData;
     constructor() {
         this._entityInfo = spriteConfigs;
     }
 
-    public getEntitySpritePaths(entityID:string): { [stateName: string]: StateSpriteFrameData } {
+    public getEntitySpritePaths(entityID:string): StateSpriteData {
         return this._entityInfo[entityID];
     }
-
 
     public getStateSpritePaths(entityID:string, state: string): Array<string> {
         let jsonConvert: JsonConvert = new JsonConvert();

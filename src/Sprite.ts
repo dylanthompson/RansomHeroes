@@ -1,11 +1,10 @@
-import { CanvasElement } from "./CanvasElement";
 import {JsonObject, JsonProperty} from "json2typescript";
 
 export class SpriteOptions {
     public imagePaths: Array<string>;
 }
 
-export class Sprite extends CanvasElement {
+export class Sprite {
     private _width: number;
     private _height: number;
     private _images: Array<HTMLImageElement>;
@@ -14,8 +13,7 @@ export class Sprite extends CanvasElement {
     private _ticksPerFrame: number;
     private _loops: boolean;
 
-    constructor(context: CanvasRenderingContext2D, options:SpriteOptions) {
-        super(context);
+    constructor(options:SpriteOptions) {
         this._images = new Array<HTMLImageElement>();
         this.loadImages(options.imagePaths);
         
@@ -47,20 +45,20 @@ export class Sprite extends CanvasElement {
         }
     }
 
-    public render() {
-        if (this._tickCount !== 1) {
-            return;
-        }
-        this._context.clearRect(0, 0, this._width, this._height);
+    public render(context: CanvasRenderingContext2D, x: number, y: number) {
+        // if (this._tickCount !== 1) {
+        //     return;
+        // }
+        //context.clearRect(0, 0, this._width, this._height);
         // void ctx.drawImage(image, sx, sy, sWidth, sHeight, dx, dy, dWidth, dHeight);
-        this._context.drawImage(
+        context.drawImage(
             this._images[this._frameIndex],
             //this._frameIndex * this._width / this._images.length,
             //0,
             //this._width / this._images.length,
             //this._height,
-            100,
-            100);//,
+            x,
+            y);//,
             //this._width / this._images.length,
             //this._height);
         };   

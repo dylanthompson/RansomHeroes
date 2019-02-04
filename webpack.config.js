@@ -2,7 +2,7 @@ const path = require('path');
 
 module.exports = {
     mode: "development",
-  entry: "./js/Canvas.js", // string | object | array  // defaults to './src'
+  entry: "./js/RHGame.js", // string | object | array  // defaults to './src'
   // Here the application starts executing
   // and webpack starts bundling
   output: {

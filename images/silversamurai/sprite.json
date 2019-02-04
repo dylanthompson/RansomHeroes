@@ -1,0 +1,13 @@
+{
+	"idle": {
+		"start": 102,
+		"end": 116,
+		"axis": {
+			"x": 400,
+			"y": 400
+		},
+		"prefix": "Silver Samurai_",
+		"suffix": ".png",
+		"pad0": 4
+	}
+}
