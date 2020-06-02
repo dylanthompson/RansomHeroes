@@ -3,3 +3,4 @@
 /dist/
 npm-debug.log
 Thumbs.db
+package-lock.json
