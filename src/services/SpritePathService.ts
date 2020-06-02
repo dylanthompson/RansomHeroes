@@ -1,62 +1,59 @@
-import { JsonConvert, JsonObject, JsonProperty } from "json2typescript";
+import { Coordinate } from "../lib/2DGame";
 
 var spriteConfigs: { [s: string]: {} };
 var entityIDs: Array<string> = ["zangief", "silversamurai"];
 
-@JsonObject("Coordinate")
-class Coordinate {
-    @JsonProperty("x", Number)
-    public x: number;
-    @JsonProperty("y", Number)
-    public y: number;
-}
-@JsonObject("StateSpriteFrameData")
-class StateSpriteFrameData {
-    @JsonProperty("start", Number)
-    public start: number = null;
-    @JsonProperty("end", Number)
-    public end: number = null;
-    @JsonProperty("axis", Coordinate)
+export class SpriteSetConfig {
     public axis: Coordinate = null;
-    @JsonProperty("prefix", String)
     public prefix: string = null;
-    @JsonProperty("suffix", String)
     public suffix: string = null;
-    @JsonProperty("pad0", Number)     
     public pad0: number = null;
 }
-
-@JsonObject("EntitySpriteFrameData")
-class EntitySpriteFrameData {
-
-     private _stateInfo: Map<string, StateSpriteFrameData>;
+export class StateSpriteFrameData {
+    public start: number = null;
+    public end: number = null;
 }
-
-spriteConfigs = {};
-for (let entityID of entityIDs) {
-    spriteConfigs[entityID] = require(`../../images/${entityID}/sprite.json`);
+export class StatesSpriteData { [stateName: string]:  StateSpriteFrameData };
+export class EntitiesSpriteSetData { [entityName: string]: EntitySpriteSetData; };
+export class EntitySpriteSetData {
+    public states: StatesSpriteData;
+    public config: SpriteSetConfig;
 }
 
 export type EntitySpriteData = { [entityName: string]: StateSpriteData };
 export type StateSpriteData = { [stateName: string]:  StateSpriteFrameData };
 
 export class SpritePathService {
-    private _entityInfo: EntitySpriteData;
+    private _entityInfo: any;
     constructor() {
-        this._entityInfo = spriteConfigs;
+        this._entityInfo = new EntitiesSpriteSetData();
+        for (let entityID of entityIDs) {
+            this._entityInfo[entityID] = require(`../../images/${entityID}/sprite.json`);
+        }
     }
 
-    public getEntitySpritePaths(entityID:string): StateSpriteData {
+    public getEntitySpritePaths(entityID:string): EntitySpriteSetData {
         return this._entityInfo[entityID];
     }
 
     public getStateSpritePaths(entityID:string, state: string): Array<string> {
-        let jsonConvert: JsonConvert = new JsonConvert();
-        let stateInfo: StateSpriteFrameData = jsonConvert.deserializeObject(this.getEntitySpritePaths(entityID)[state], StateSpriteFrameData);
+        let entitySpriteData:EntitySpriteSetData = this.getEntitySpritePaths(entityID);
+        let stateInfo: StateSpriteFrameData = entitySpriteData.states[state];
         let paths = new Array<string>();
-        for (let i = stateInfo.start; i <= stateInfo.end; i++) {
-            paths.push(`images/${entityID}/${stateInfo.prefix + i.toString().padStart(stateInfo.pad0, '0') + stateInfo.suffix}`);
+
+        let start = stateInfo.start;
+        let end = stateInfo.end;
+
+        if (end > start) {
+            for (let i = start; i <= end; i++) {
+                paths.push(`images/${entityID}/${entitySpriteData.config.prefix + i.toString().padStart(entitySpriteData.config.pad0, '0') + entitySpriteData.config.suffix}`);
+            }
+        } else {
+            for (let i = start; i >= end; i--) {
+                paths.push(`images/${entityID}/${entitySpriteData.config.prefix + i.toString().padStart(entitySpriteData.config.pad0, '0') + entitySpriteData.config.suffix}`);
+            }
         }
+
         return paths;
     }
 }

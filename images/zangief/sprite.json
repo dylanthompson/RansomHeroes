@@ -1,13 +1,53 @@
 {
-	"idle": {
-		"start": 2,
-		"end": 7,
-		"axis": {
-			"x": 400,
-			"y": 400
-		},
+	"config": {
 		"prefix": "Zangief_",
 		"suffix": ".png",
-		"pad0": 4
+		"pad0": 4,
+		"axis": {
+			"x": 400,
+			"y": 260
+		}
+	},
+	"states": {
+		"turn": {
+			"start": 74,
+			"end": 70
+		},
+		"idle": {
+			"start": 17,
+			"end": 36
+		},
+		"air-idle": {
+			"start": 65,
+			"end": 65
+		},
+		"walk": {
+			"start": 37,
+			"end": 46
+		},
+		"lariat": {
+			"start": 2,
+			"end": 7
+		},
+		"air-jump-forward": {
+			"start": 62,
+			"end": 64
+		},
+		"air-jump": {
+			"start": 62,
+			"end": 64
+		},
+		"air-idle-forward": {
+			"start": 65,
+			"end": 65
+		},
+		"land-forward": {
+			"start": 69,
+			"end": 67
+		},
+		"land": {
+			"start": 69,
+			"end": 67
+		}
 	}
 }

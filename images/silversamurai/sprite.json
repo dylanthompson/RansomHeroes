@@ -1,13 +1,49 @@
 {
-	"idle": {
-		"start": 102,
-		"end": 116,
+	"config": {
+		"prefix": "Silver Samurai_",
+		"suffix": ".png",
+		"pad0": 4,
 		"axis": {
 			"x": 400,
 			"y": 400
+		}
+	},
+	"states": {
+		"turn": {
+			"start": 214,
+			"end": 210
 		},
-		"prefix": "Silver Samurai_",
-		"suffix": ".png",
-		"pad0": 4
+		"idle": {
+			"start": 102,
+			"end": 116
+		},
+		"air-idle": {
+			"start": 170,
+			"end": 171
+		},
+		"walk": {
+			"start": 118,
+			"end": 131
+		},
+		"air-jump-forward": {
+			"start": 177,
+			"end": 182
+		},
+		"air-jump": {
+			"start": 164,
+			"end": 169
+		},
+		"air-idle-forward": {
+			"start": 183,
+			"end": 184
+		},
+		"land-forward": {
+			"start": 185,
+			"end": 189
+		},
+		"land": {
+			"start": 173,
+			"end": 176
+		}
 	}
 }
